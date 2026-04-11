@@ -1,13 +1,11 @@
 import cv2
 import numpy as np
 
-# Resmi gri tonlamalı oku (Dosya adını klasörüne göre kontrol et)
 img = cv2.imread('tuz_biber_gurultusu.jpg', 0)
 
 if img is None:
     print("Hata: Resim bulunamadı!")
 else:
-    # --- KODUN ORİJİNAL KISMI (DOKUNULMADI) ---
     # 1. Laplacian Kenar Algılama
     laplacian = cv2.Laplacian(img, cv2.CV_64F)
     laplacian = np.uint8(np.absolute(laplacian))
@@ -25,8 +23,7 @@ else:
                               [-1,  5, -1],
                               [ 0, -1,  0]])
     keskin2 = cv2.filter2D(img, -1, kernel_sharp)
-    # --- KODUN ORİJİNAL KISMI SONU ---
-
+    
     # --- GÖRSELLEŞTİRME VE IMSHOW ---
     # Magnitude sonucunu resim formatına çevir
     sobel_mag = np.uint8(sobel_mag)
